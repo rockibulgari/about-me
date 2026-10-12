@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ибрагим — Обо мне</title>
+
+  <style>
+    /* ===== Общие настройки ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Бургундская палитра */
+      --bg: #faf5f6;           /* фон страницы */
+      --card: #ffffff;         /* фон главной карточки */
+      --text: #2a1a1e;         /* основной текст */
+      --muted: #7a6468;        /* второстепенный текст */
+      --accent: #800020;       /* бургунди — главный цвет */
+      --accent-light: #b03a48; /* светлый бургунди для градиента */
+      --accent-soft: #fbeef0;  /* очень светлый оттенок для плашек */
+      --border: #f0dde1;       /* рамки */
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg) 50%, #f5e6e8 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    /* ===== Карточка ===== */
+    .card {
+      background: var(--card);
+      width: 100%;
+      max-width: 640px;
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 10px 30px rgba(128, 0, 32, 0.08);
+    }
+
+    /* ===== Шапка: аватар и имя ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #fff;
+      font-size: 40px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ===== Текст о себе ===== */
+    .about {
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    /* ===== Блок «Чему я учусь» ===== */
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .skills {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .skills li {
+      background: var(--accent-soft);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 500;
+    }
+
+    .skills li::before {
+      content: "✓ ";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ===== Блок «Мои планы» ===== */
+    .plans-block {
+      margin-top: 32px;
+    }
+
+    .plans {
+      list-style: none;
+      counter-reset: plan;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plans li {
+      counter-increment: plan;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      font-weight: 500;
+    }
+
+    .plans li::before {
+      content: counter(plan);
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== Карточка с контактом ===== */
+    .contact {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    /* Если карточки идут подряд — отступ между ними меньше */
+    .contact + .contact {
+      margin-top: 12px;
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-phone {
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-phone:hover {
+      color: var(--accent);
+    }
+
+    /* ===== Подвал ===== */
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== Адаптация под телефон ===== */
+    @media (max-width: 480px) {
+      .card {
+        padding: 28px 20px;
+        border-radius: 16px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+
+    <header class="header">
+      <div class="avatar">И</div>
+      <h1>Ибрагим</h1>
+      <p class="subtitle">Начинающий разработчик</p>
+    </header>
+
+    <section class="about">
+      <p>
+        Привет! Меня зовут Ибрагим, и я учусь создавать сайты и ботов.
+        Это мой первый проект — страница о себе, которую я сделал с помощью вайбкодинга.
+        Мне нравится видеть, как идея превращается в работающую программу.
+      </p>
+    </section>
+
+    <section>
+      <h2>Чему я учусь</h2>
+      <ul class="skills">
+        <li>HTML — структура страниц</li>
+        <li>CSS — оформление и дизайн</li>
+        <li>Адаптивная вёрстка</li>
+        <li>Создание ботов</li>
+        <li>Работа с ИИ-ассистентами</li>
+        <li>Основы программирования</li>
+      </ul>
+    </section>
+
+    <section class="plans-block">
+      <h2>Мои планы</h2>
+      <ol class="plans">
+        <li>Сделать Telegram-бота</li>
+        <li>Создать сайт для пиццерии</li>
+        <li>Создать сайт для отелей</li>
+      </ol>
+    </section>
+
+    <section class="contact">
+      <div class="contact-icon">📞</div>
+      <div>
+        <p class="contact-label">Связаться со мной</p>
+        <a class="contact-phone" href="tel:+79001234567">+7 (900) 123-45-67</a>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="contact-icon">✈️</div>
+      <div>
+        <p class="contact-label">Telegram</p>
+        <a class="contact-phone" href="https://t.me/rockibulgari" target="_blank">@rockibulgari</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Ибрагим</p>
+    </footer>
+
+  </main>
+</body>
+</html>
